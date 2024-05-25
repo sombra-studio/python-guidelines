@@ -37,7 +37,57 @@ label_params = LabelParams(label_x,
 #### Why
 
 Because the second method is inconsistent, depending on where the parenthesis 
-starts you would have 
+starts you would have
+
+
+## Naming conventions
+
+### 1. Use all upper case letters for naming constants
+
+```py
+COLOR_CHANNELS = 1
+MAX_COLOR = 255
+V_SAMPLES = 3
+H_SAMPLES = 3
+```
+### 2. Use snake_case for functions, methods and variable names
+
+#### Do this
+
+```py
+def find_closest_color(color, palette):
+    min_difference = np.inf
+    closest_color = palette[0]
+    for palette_color in palette:
+        difference = np.abs(color - palette_color)
+        if difference < min_difference:
+            min_difference = difference
+            closest_color = palette_color
+    return closest_color
+```
+
+#### Don't do this
+
+```py
+def findClosestColor(color, palette):
+    minDifference = np.inf
+    closest_color = palette[0]
+    for paletteColor in palette:
+        difference = np.abs(color - paletteColor)
+        if difference < minDifference:
+            minDifference = difference
+            closest_color = paletteColor
+    return closest_color
+```
+
+### 3. Use CamelCase for class names
+
+#### Do this
+
+```py
+class VertexGroup:
+```
+
 
 ## Functions
 
@@ -250,9 +300,28 @@ class Camera:
         """
 ```
 
+## Imports
 
+When importing modules use alphabetical order and import global packages first
+and then local modules. Sometimes import order matters, only in those case don't
+use alphabetical and add a comment explaining that.
 
+```py
+import numpy as np
+from PIL import Image
 
+# Local modules
+import utils
+```
+
+```py
+from .mesh import Mesh
+from .model import Model
+from .wireframe import Wireframe
+# IMPORTANT DON'T MOVE THE IMPORT OF OBJ, IT NEEDS THIS ORDER BECAUSE IT USES
+# MESH AND MODEL
+from . import obj
+```
 
 
 
