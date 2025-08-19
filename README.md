@@ -27,17 +27,17 @@ label_params = LabelParams(
 
 ```py
 label_params = LabelParams(label_x,
-                            label_y,
-                            self.width,
-                            self.height,
-                            value=self.label_value,
-                            style=params.style)
+                           label_y,
+                           self.width,
+                           self.height,
+                           value=self.label_value,
+                           style=params.style)
 ```
 
 #### Why
 
-Because the second method is inconsistent, depending on where the parenthesis 
-starts you would have
+Because the second method is inconsistent, it depends on where the 
+parenthesis starts 
 
 
 ## Naming conventions
@@ -86,6 +86,12 @@ def findClosestColor(color, palette):
 
 ```py
 class VertexGroup:
+```
+
+#### Don't do this
+
+```py
+class vertex_group:
 ```
 
 
@@ -239,10 +245,7 @@ class Button(Widget):
 class Button(Widget):
     # Notice the amount of arguments in this init function
     def __init__(
-        self, x, y, width, height, label, on_press, color, hover_color, 
-        press_color, style,
-        batch,
-        group = None
+        self, x, y, width, height, label, on_press, color, hover_color, press_color, style, batch, group = None
     ):
         super().__init__(x, y, width, height, batch, group)
         self.label_value: str = label
